@@ -7,7 +7,6 @@ Uma aplicação web simples e funcional para consulta de endereços e CEPs brasi
 * **Busca por CEP:** Insira um CEP de 8 dígitos e obtenha o endereço completo (rua, bairro, cidade e estado).
 * **Busca por Endereço:** Insira o Estado, a Cidade e o nome da Rua para encontrar uma lista de CEPs correspondentes.
 * **Histórico de Buscas:** Todas as consultas realizadas são salvas no armazenamento local do navegador para referência futura.
-* **Visualização de Detalhes:** Clique em um ícone de olho em qualquer item do histórico para ver os detalhes completos daquela consulta em uma janela modal.
 
 ## 💻 Tecnologias Utilizadas
 

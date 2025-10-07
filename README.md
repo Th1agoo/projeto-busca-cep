@@ -22,8 +22,4 @@ Uma aplicação web simples e funcional para consulta de endereços e CEPs brasi
 2.  Abra o arquivo `index.html` em qualquer navegador de sua preferência.
 3.  Pronto! A aplicação não requer nenhuma instalação adicional.
 
-## 🔗 Demonstração Online
 
-Você pode ver o projeto em funcionamento através do GitHub Pages no seguinte link:
-
-**[https://Th1agoo.github.io/aula-cloud-busca-cep/](https://Th1agoo.github.io/aula-cloud-busca-cep/)**

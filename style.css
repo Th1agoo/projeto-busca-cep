@@ -7,8 +7,10 @@
     --dark-gray: #333;
     --border-color: #ddd;
     --danger-color: #c62828;
+    --success-color: #2e7d32;
 }
 
+/* Reset e estilo base */
 * {
     margin: 0;
     padding: 0;
@@ -21,24 +23,36 @@ body {
     color: var(--dark-gray);
 }
 
+/* Header */
 header {
     background-color: var(--primary-color);
     color: white;
     padding: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
+header h1 {
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Container principal */
 main {
-    max-width: 800px;
-    margin: 40px auto;
+    max-width: 850px;
+    margin: 50px auto;
     padding: 0 20px;
 }
 
-/* Estilos das Abas */
+/* --- Abas --- */
 .tabs {
     display: flex;
     border-bottom: 2px solid var(--border-color);
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
 }
 
 .tab-btn {
@@ -46,7 +60,7 @@ main {
     padding: 15px;
     font-size: 1rem;
     font-weight: 600;
-    background-color: transparent;
+    background-color: #eaf3ff;
     border: none;
     cursor: pointer;
     color: var(--secondary-color);
@@ -59,19 +73,21 @@ main {
 }
 
 .tab-btn:hover {
-    background-color: #e3f2fd;
+    background-color: #d2e5ff;
 }
 
 .tab-btn.active {
     color: var(--primary-color);
+    background-color: white;
     border-bottom-color: var(--primary-color);
 }
 
+/* Conteúdo das abas */
 .content-container {
     background-color: white;
-    padding: 30px;
+    padding: 35px;
     border-radius: 0 0 8px 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
 }
 
 .tab-content {
@@ -80,20 +96,15 @@ main {
 
 .tab-content.active {
     display: block;
-    animation: fadeIn 0.5s;
+    animation: fadeIn 0.4s ease-in-out;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Estilos Gerais de Formulário */
+/* --- Formulários --- */
 h2 {
     color: var(--primary-color);
     margin-bottom: 20px;
@@ -106,8 +117,17 @@ select {
     border: 1px solid var(--border-color);
     border-radius: 6px;
     font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
+input[type="text"]:focus,
+select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 6px rgba(25, 118, 210, 0.3);
+    outline: none;
+}
+
+/* --- Botões --- */
 button {
     background-color: var(--secondary-color);
     color: white;
@@ -120,13 +140,23 @@ button {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 button:hover {
     background-color: var(--primary-color);
+    transform: scale(1.03);
 }
 
+#clear-logs-btn {
+    background-color: var(--danger-color);
+}
+
+#clear-logs-btn:hover {
+    background-color: #b71c1c;
+}
+
+/* Grupos de entrada */
 .input-group {
     display: flex;
     gap: 10px;
@@ -154,11 +184,17 @@ button:hover {
     display: block;
 }
 
+/* Painel de resultados */
 .result-panel {
     margin-top: 20px;
+    padding: 15px;
+    background-color: #f9fbfd;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
 }
 
-/* Estilos dos Logs */
+/* Histórico */
 .logs-list {
     margin-top: 20px;
     max-height: 400px;
@@ -171,6 +207,12 @@ button:hover {
     border-radius: 6px;
     padding: 15px;
     margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.log-item:hover {
+    background-color: #f5f9ff;
+    transform: scale(1.01);
 }
 
 .log-item p {
@@ -184,13 +226,26 @@ button:hover {
 
 .log-item .log-time {
     font-size: 0.8rem;
-    color: #888;
+    color: #777;
 }
 
-#clear-logs-btn {
-    background-color: var(--danger-color);
-}
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    main {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
 
-#clear-logs-btn:hover {
-    background-color: #b71c1c;
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        justify-content: center;
+    }
 }

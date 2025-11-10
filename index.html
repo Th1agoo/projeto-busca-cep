@@ -1,102 +1,125 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Central de Consultas CEP</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Central de Consultas CEP</title>
+
+  <!-- Ícones e estilo -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
+  <header>
+    <h1><i class="fa-solid fa-map-location-dot"></i> Central de Consultas CEP</h1>
+  </header>
 
-    <header>
-        <h1><i class="fa-solid fa-map-location-dot"></i> Central de Consultas CEP</h1>
-    </header>
+  <main>
+    <!-- Navegação entre abas -->
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="tab-cep">
+        <i class="fa-solid fa-hashtag"></i> Busca por CEP
+      </button>
+      <button class="tab-btn" data-tab="tab-endereco">
+        <i class="fa-solid fa-road"></i> Busca por Endereço
+      </button>
+      <button class="tab-btn" data-tab="tab-logs">
+        <i class="fa-solid fa-clipboard-list"></i> Histórico (Logs)
+      </button>
+    </nav>
 
-    <main>
-        <nav class="tabs">
-            <button class="tab-btn active" data-tab="tab-cep">
-                <i class="fa-solid fa-hashtag"></i> Busca por CEP
-            </button>
-            <button class="tab-btn" data-tab="tab-endereco">
-                <i class="fa-solid fa-road"></i> Busca por Endereço
-            </button>
-            <button class="tab-btn" data-tab="tab-logs">
-                <i class="fa-solid fa-clipboard-list"></i> Histórico (Logs)
-            </button>
-        </nav>
+    <!-- Conteúdo das abas -->
+    <div class="content-container">
 
-        <div class="content-container">
-            <div id="tab-cep" class="tab-content active">
-                <h2>Consultar Endereço por CEP</h2>
-                <div class="input-group">
-                    <input type="text" id="cep-input" placeholder="Digite o CEP (apenas números)" maxlength="8">
-                    <button id="cep-search-btn"><i class="fa-solid fa-magnifying-glass"></i> BUSCAR</button>
-                </div>
-                <div id="cep-result" class="result-panel"></div>
-            </div>
+      <!-- Aba 1: Busca por CEP -->
+      <div id="tab-cep" class="tab-content active">
+        <h2>Consultar Endereço por CEP</h2>
 
-            <div id="tab-endereco" class="tab-content">
-                <h2>Buscar CEP por Endereço</h2>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="uf-select">Estado (UF)</label>
-                        <select id="uf-select">
-                            <option value="">Selecione...</option>
-                            <option value="AC">Acre</option>
-                            <option value="AL">Alagoas</option>
-                            <option value="AP">Amapá</option>
-                            <option value="AM">Amazonas</option>
-                            <option value="BA">Bahia</option>
-                            <option value="CE">Ceará</option>
-                            <option value="DF">Distrito Federal</option>
-                            <option value="ES">Espírito Santo</option>
-                            <option value="GO">Goiás</option>
-                            <option value="MA">Maranhão</option>
-                            <option value="MT">Mato Grosso</option>
-                            <option value="MS">Mato Grosso do Sul</option>
-                            <option value="MG">Minas Gerais</option>
-                            <option value="PA">Pará</option>
-                            <option value="PB">Paraíba</option>
-                            <option value="PR">Paraná</option>
-                            <option value="PE">Pernambuco</option>
-                            <option value="PI">Piauí</option>
-                            <option value="RJ">Rio de Janeiro</option>
-                            <option value="RN">Rio Grande do Norte</option>
-                            <option value="RS">Rio Grande do Sul</option>
-                            <option value="RO">Rondônia</option>
-                            <option value="RR">Roraima</option>
-                            <option value="SC">Santa Catarina</option>
-                            <option value="SP">São Paulo</option>
-                            <option value="SE">Sergipe</option>
-                            <option value="TO">Tocantins</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="cidade-input">Cidade</label>
-                        <input type="text" id="cidade-input" placeholder="Ex: Recife">
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="rua-input">Rua / Logradouro</label>
-                        <input type="text" id="rua-input" placeholder="Ex: Rua do Sol">
-                    </div>
-                </div>
-                <button id="endereco-search-btn"><i class="fa-solid fa-magnifying-glass"></i> BUSCAR</button>
-                <div id="endereco-result" class="result-panel"></div>
-            </div>
-
-            <div id="tab-logs" class="tab-content">
-                <h2>Histórico de Consultas</h2>
-                <button id="clear-logs-btn"><i class="fa-solid fa-trash"></i> Limpar Histórico</button>
-                <div id="logs-list" class="logs-list">
-                </div>
-            </div>
+        <div class="input-group">
+          <input type="text" id="cep-input"
+                 placeholder="Digite o CEP (apenas números)" maxlength="8">
+          <button id="cep-search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i> BUSCAR
+          </button>
         </div>
-    </main>
 
-    <script src="script.js"></script>
+        <div id="cep-result" class="result-panel"></div>
+      </div>
+
+      <!-- Aba 2: Busca por Endereço -->
+      <div id="tab-endereco" class="tab-content">
+        <h2>Buscar CEP por Endereço</h2>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="uf-select">Estado (UF)</label>
+            <select id="uf-select">
+              <option value="">Selecione...</option>
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option>
+              <option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option>
+              <option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option>
+              <option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option>
+              <option value="PB">Paraíba</option>
+              <option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option>
+              <option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option>
+              <option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option>
+              <option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="cidade-input">Cidade</label>
+            <input type="text" id="cidade-input" placeholder="Ex: Recife">
+          </div>
+
+          <div class="form-group full-width">
+            <label for="rua-input">Rua / Logradouro</label>
+            <input type="text" id="rua-input" placeholder="Ex: Rua do Sol">
+          </div>
+        </div>
+
+        <button id="endereco-search-btn">
+          <i class="fa-solid fa-magnifying-glass"></i> BUSCAR
+        </button>
+
+        <div id="endereco-result" class="result-panel"></div>
+      </div>
+
+      <!-- Aba 3: Histórico -->
+      <div id="tab-logs" class="tab-content">
+        <h2>Histórico de Consultas</h2>
+
+        <button id="clear-logs-btn" class="danger">
+          <i class="fa-solid fa-trash"></i> Limpar Histórico
+        </button>
+
+        <div id="logs-list" class="logs-list"></div>
+      </div>
+    </div>
+  </main>
+
+  
+
+  <script src="script.js"></script>
 </body>
-
 </html>
